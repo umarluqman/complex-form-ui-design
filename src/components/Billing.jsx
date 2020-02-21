@@ -20,14 +20,8 @@ import { jsx } from "@emotion/core";
 
 const Billing = () => {
   return (
-    <Flex
-      display="flex"
-      flexDirection="row"
-      alignItems="flex-start"
-      justifyContent="flex-start"
-      p={4}
-    >
-      <Box width={500} mr={8}>
+    <Grid templateColumns={{ xs: "1fr", md: "1fr 2fr" }} p={4} mt={2}>
+      <Box mr={8} mb={4}>
         <Text fontSize="xl" mb={4}>
           Billing
         </Text>
@@ -41,7 +35,6 @@ const Billing = () => {
         flexDirection="column"
         alignItems="flex-start"
         justifyContent="flex-start"
-        width="100%"
         mt={2}
       >
         <FormControl width="100%" mb={8} mr={4}>
@@ -52,10 +45,10 @@ const Billing = () => {
             </Button>
           </Flex>
 
-          <Grid templateColumns="repeat(auto-fit, minmax(100px,1fr))" gap={6}>
+          <Grid templateColumns="repeat(auto-fit, minmax(180px,1fr))" gap={5}>
             <Box
               borderRadius={8}
-              border={`1px solid ${theme.colors.gray[300]}`}
+              border={`2px solid ${theme.colors.gray[300]}`}
               p={4}
             >
               <Text
@@ -129,7 +122,7 @@ const Billing = () => {
             </Box>
             <Box
               borderRadius={8}
-              border={`1px solid ${theme.colors.gray[300]}`}
+              border={`2px solid ${theme.colors.gray[300]}`}
               p={4}
             >
               <Text
@@ -192,7 +185,7 @@ const Billing = () => {
           </Flex>
         </FormControl>
       </Flex>
-    </Flex>
+    </Grid>
   );
 };
 

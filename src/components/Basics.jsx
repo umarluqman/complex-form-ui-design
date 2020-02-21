@@ -8,21 +8,14 @@ import {
   FormLabel,
   Input,
   Select,
-  Text
+  Text,
+  Grid
 } from "@chakra-ui/core";
 import React from "react";
 
 const Basics = () => (
-  <Flex
-    display="flex"
-    flexDirection="row"
-    alignItems="flex-start"
-    justifyContent="flex-start"
-    p={4}
-    mt={2}
-    flexWrap="wrap"
-  >
-    <Box width={500} mr={8}>
+  <Grid templateColumns={{ xs: "1fr", md: "1fr 2fr" }} p={4} mt={2}>
+    <Box mr={8} mb={4}>
       <Text fontSize="xl" mb={4}>
         Basics
       </Text>
@@ -31,13 +24,7 @@ const Basics = () => (
         step toward improved account security.
       </Text>
     </Box>
-    <Flex
-      display="flex"
-      flexDirection="column"
-      alignItems="flex-start"
-      justifyContent="flex-start"
-      width="100%"
-    >
+    <Flex flexDirection="column">
       <FormControl width="100%" mb={8}>
         <FormLabel>Email address</FormLabel>
         <Input
@@ -71,7 +58,7 @@ const Basics = () => (
         <Select variant="outline" size="md" placeholder="Choose..." />
       </FormControl>
     </Flex>
-  </Flex>
+  </Grid>
 );
 
 export default Basics;

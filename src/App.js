@@ -30,6 +30,7 @@ const App = () => (
       justifyContent="flex-start"
       backgroundColor="gray.50"
       pb={80}
+      width="100%"
     >
       <Box maxWidth={1000}>
         <Box>
@@ -55,14 +56,16 @@ const App = () => (
         <Divider borderColor="gray.300" width="100%" />
         <Notification />
         <Divider borderColor="gray.300" width="100%" />
-        <Flex justify="flex-end">
-          <Box my={4}>
-            <Button variantColor="blue" variant="outline" mr={4} px={8}>
-              Cancel
-            </Button>
-            <Button variantColor="blue" px={8}>
-              Save Settings
-            </Button>
+        <Flex justifyContent="flex-end" width="100%">
+          <Box width={{ xs: "100%", md: 380 }}>
+            <Grid templateColumns={{ xs: "1fr", md: "1fr 1fr" }} m={4} gap={4}>
+              <Button variantColor="blue" variant="outline" width={"100%"}>
+                Cancel
+              </Button>
+              <Button variantColor="blue" width={"100%"}>
+                Save Settings
+              </Button>
+            </Grid>
           </Box>
         </Flex>
       </Box>
