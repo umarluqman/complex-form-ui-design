@@ -9,9 +9,12 @@
     "@emotion/core": "10.0.27",
     "@emotion/styled": "10.0.27",
     "emotion-theming": "10.0.27",
+    "formik": "^2.1.4",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-scripts": "3.0.1"
+    "react-hook-form": "^4.9.8",
+    "react-scripts": "3.0.1",
+    "react-select": "^3.0.8"
   },
   "devDependencies": {
     "react-scripts": "1.0.0",

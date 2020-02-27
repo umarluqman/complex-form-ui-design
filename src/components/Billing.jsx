@@ -1,7 +1,6 @@
 /**
  * @jsx jsx
  * */
-import React from "react";
 import {
   Box,
   Button,
@@ -10,15 +9,78 @@ import {
   FormErrorMessage,
   FormLabel,
   Grid,
-  Input,
   Text,
-  Textarea,
-  theme,
-  Icon
+  theme
 } from "@chakra-ui/core";
 import { jsx } from "@emotion/core";
+import * as React from "react";
 
-const Billing = () => {
+const PlanBox = ({ name, size, setPlan, plan }) => {
+  const selected = plan === name;
+  return (
+    <Box
+      borderRadius={8}
+      border={
+        selected
+          ? `2px solid ${theme.colors.teal[400]}`
+          : `2px solid ${theme.colors.gray[300]}`
+      }
+      p={4}
+      css={
+        selected
+          ? {
+              "&:hover": {
+                cursor: "pointer"
+              },
+              transition: "0.3s",
+              backgroundColor: theme.colors.teal[50]
+            }
+          : {
+              "&:hover": {
+                cursor: "pointer",
+                transition: "0.3s",
+                backgroundColor: "#e6fffa3d",
+                borderColor: theme.colors.teal[400]
+              }
+            }
+      }
+      textAlign="left"
+      height="100%"
+      onClick={() => setPlan(name)}
+    >
+      <Text
+        fontSize="sm"
+        letterSpacing={1.2}
+        fontWeight="semibold"
+        color={theme.colors.gray[600]}
+        pb={2}
+      >
+        {name}
+      </Text>
+      <Text>
+        <span>
+          <b>
+            <span css={{ fontSize: 24 }}>{size}</span> GB
+          </b>
+        </span>{" "}
+        <span css={{ fontWeight: 600, color: theme.colors.gray[600] }}>
+          {" "}
+          uploads
+        </span>
+      </Text>
+      <Text fontWeight={600} color={theme.colors.gray[600]}>
+        <span>
+          $ <span css={{ fontWeight: 700, color: theme.colors.black }}>5 </span>
+        </span>
+        / month
+      </Text>
+    </Box>
+  );
+};
+
+const Billing = ({ values, ...formProps }) => {
+  const [plan, setPlan] = React.useState("BASIC");
+
   return (
     <Grid templateColumns={{ xs: "1fr", md: "1fr 2fr" }} p={4} mt={2}>
       <Box mr={8} mb={4}>
@@ -46,115 +108,27 @@ const Billing = () => {
           </Flex>
 
           <Grid templateColumns="repeat(auto-fit, minmax(180px,1fr))" gap={5}>
-            <Box
-              borderRadius={8}
-              border={`2px solid ${theme.colors.gray[300]}`}
-              p={4}
-            >
-              <Text
-                fontSize="sm"
-                letterSpacing={1.2}
-                fontWeight="semibold"
-                color={theme.colors.gray[600]}
-                pb={2}
-              >
-                BASIC
-              </Text>
-              <Text>
-                <span>
-                  <b>
-                    <span css={{ fontSize: 24 }}>1</span> GB
-                  </b>
-                </span>{" "}
-                <span css={{ fontWeight: 600, color: theme.colors.gray[600] }}>
-                  {" "}
-                  uploads
-                </span>
-              </Text>
-              <Text fontWeight={600} color={theme.colors.gray[600]}>
-                <span>
-                  ${" "}
-                  <span css={{ fontWeight: 700, color: theme.colors.black }}>
-                    5{" "}
-                  </span>
-                </span>
-                / month
-              </Text>
-            </Box>
-            <Box
-              borderRadius={8}
-              border={`2px solid ${theme.colors.teal[400]}`}
-              p={4}
-              backgroundColor={theme.colors.teal[50]}
-            >
-              <Flex justify="space-between">
-                <Text
-                  fontSize="sm"
-                  letterSpacing={1.2}
-                  fontWeight="semibold"
-                  color={theme.colors.gray[600]}
-                  pb={2}
-                >
-                  ESSENTIAL
-                </Text>
-                <Icon name="check-circle" size="24px" color="teal.400" />
-              </Flex>
-              <Text>
-                <span>
-                  <b>
-                    <span css={{ fontSize: 24 }}>5</span> GB
-                  </b>
-                </span>{" "}
-                <span css={{ fontWeight: 600, color: theme.colors.gray[600] }}>
-                  {" "}
-                  uploads
-                </span>
-              </Text>
-              <Text fontWeight={600} color={theme.colors.gray[600]}>
-                <span>
-                  ${" "}
-                  <span css={{ fontWeight: 700, color: theme.colors.black }}>
-                    10{" "}
-                  </span>
-                </span>
-                / month
-              </Text>
-            </Box>
-            <Box
-              borderRadius={8}
-              border={`2px solid ${theme.colors.gray[300]}`}
-              p={4}
-            >
-              <Text
-                fontSize="sm"
-                letterSpacing={1.2}
-                fontWeight="semibold"
-                color={theme.colors.gray[600]}
-                pb={2}
-              >
-                PRO
-              </Text>
-              <Text>
-                <span>
-                  <b>
-                    <span css={{ fontSize: 24 }}>15</span> GB
-                  </b>
-                </span>{" "}
-                <span css={{ fontWeight: 600, color: theme.colors.gray[600] }}>
-                  {" "}
-                  uploads
-                </span>
-              </Text>
-              <Text fontWeight={600} color={theme.colors.gray[600]}>
-                <span>
-                  ${" "}
-                  <span css={{ fontWeight: 700, color: theme.colors.black }}>
-                    20{" "}
-                  </span>
-                </span>
-                / month
-              </Text>
-            </Box>
+            <PlanBox
+              name={"BASIC"}
+              size={"1"}
+              setPlan={setPlan}
+              plan={plan}
+              price="5"
+            />
+            <PlanBox
+              name={"ESSENTIAL"}
+              size={"5"}
+              setPlan={setPlan}
+              plan={plan}
+              price="10"
+            />
+            <PlanBox
+              name={"PRO"}
+              size={"15"}
+              setPlan={setPlan}
+              plan={plan}
+              price="20"
+            />
           </Grid>
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>

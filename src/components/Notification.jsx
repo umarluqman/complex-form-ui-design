@@ -1,21 +1,16 @@
-import React from "react";
 import {
   Box,
-  Button,
+  Checkbox,
+  CheckboxGroup,
   Flex,
   FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-  Text,
-  Textarea,
   FormHelperText,
-  Checkbox,
   Grid,
-  CheckboxGroup
+  Text
 } from "@chakra-ui/core";
+import * as React from "react";
 
-const Notification = () => (
+const Notification = ({ ...formProps }) => (
   <Grid templateColumns={{ xs: "1fr", md: "1fr 2fr" }} p={4} mt={2}>
     <Box mr={8} mb={4}>
       <Text fontSize="xl" mb={4}>

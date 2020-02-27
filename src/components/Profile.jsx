@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   Box,
   Button,
@@ -12,7 +12,7 @@ import {
   Grid
 } from "@chakra-ui/core";
 
-const Profile = () => (
+const Profile = ({ values, ...formProps }) => (
   <Grid templateColumns={{ xs: "1fr", md: "1fr 2fr" }} p={4} mt={2}>
     <Box mr={8} mb={4}>
       <Text fontSize="xl" mb={4}>
@@ -45,6 +45,9 @@ const Profile = () => (
             isFullWidth
             focusBorderColor="blue.500"
             errorBorderColor="red.500"
+            value={values.firstName}
+            {...formProps}
+            id="firstName"
           />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
@@ -57,6 +60,9 @@ const Profile = () => (
             isFullWidth
             focusBorderColor="blue.500"
             errorBorderColor="red.500"
+            value={values.lastName}
+            {...formProps}
+            id="lastName"
           />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
@@ -84,7 +90,13 @@ const Profile = () => (
       </FormControl>
       <FormControl mb={8} width="100%">
         <FormLabel>About you</FormLabel>
-        <Textarea focusBorderColor="blue.500" errorBorderColor="red.500" />
+        <Textarea
+          focusBorderColor="blue.500"
+          errorBorderColor="red.500"
+          value={values.aboutYou}
+          {...formProps}
+          id="aboutYou"
+        />
         <FormErrorMessage>Error message</FormErrorMessage>
       </FormControl>
     </Flex>
